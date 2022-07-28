@@ -45,3 +45,24 @@ GROUP BY
     roles.name
 ORDER BY
     roles.name;
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- BÔNUS -- 
+SELECT
+    schools.name AS school,
+    courses.name AS course,
+    MAX(e1."courseId") AS "studentsCount"
+FROM
+    educations e1
+    JOIN courses ON e1."courseId" = courses.id
+    JOIN schools ON e1."schoolId" = schools.id
+WHERE
+    e1.status = 'ongoing'
+    OR e1.status = 'finished'
+GROUP BY
+    courses.id,
+    schools.id
+ORDER BY
+    "studentsCount" DESC
+LIMIT
+    3;
