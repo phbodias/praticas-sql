@@ -51,7 +51,8 @@ ORDER BY
 SELECT
     schools.name AS school,
     courses.name AS course,
-    COUNT(e1."schoolId") AS "studentsCount"
+    COUNT(e1."schoolId") AS "studentsCount",
+    e1.status
 FROM
     educations e1
     JOIN courses ON e1."courseId" = courses.id
@@ -61,7 +62,8 @@ WHERE
     OR e1.status = 'finished'
 GROUP BY
     courses.id,
-    schools.id
+    schools.id,
+    e1.status
 ORDER BY
     "studentsCount" DESC
 LIMIT
