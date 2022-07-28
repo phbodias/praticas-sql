@@ -51,7 +51,7 @@ ORDER BY
 SELECT
     schools.name AS school,
     courses.name AS course,
-    MAX(e1."courseId") AS "studentsCount"
+    COUNT(e1."schoolId") AS "studentsCount"
 FROM
     educations e1
     JOIN courses ON e1."courseId" = courses.id
