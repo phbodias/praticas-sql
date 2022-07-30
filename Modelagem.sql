@@ -33,7 +33,7 @@ CREATE TABLE "customerPhones" (
     id serial NOT NULL PRIMARY KEY,
     "customerId" integer NOT NULL REFERENCES customers(id),
     number integer NOT NULL UNIQUE,
-    type text NOT NULL ENUM('landline', 'mobile')
+    type text NOT NULL 
 );
 
 CREATE TABLE "bankAccount" (
@@ -49,7 +49,7 @@ CREATE TABLE transactions (
     id serial NOT NULL PRIMARY KEY,
     "bankAccountId" integer NOT NULL REFERENCES "bankAccount"(id),
     amount integer NOT NULL,
-    type text NOT NULL ENUM('deposit', 'withdraw'),
+    type text NOT NULL,
     time timestamp NOT NULL DEFAULT NOW(),
     description varchar(50),
     cancelled boolean DEFAULT false
