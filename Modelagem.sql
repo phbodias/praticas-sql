@@ -30,10 +30,10 @@ CREATE TABLE "customerAddresses" (
 );
 
 CREATE TABLE "customerPhones" (
-	id serial NOT NULL PRIMARY KEY,
-	"customerId" integer NOT NULL REFERENCES customers(id),
-	number integer NOT NULL UNIQUE,
-	type text NOT NULL
+    id serial NOT NULL PRIMARY KEY,
+    "customerId" integer NOT NULL REFERENCES customers(id),
+    number integer NOT NULL UNIQUE,
+    type text NOT NULL ENUM('landline', 'mobile')
 );
 
 CREATE TABLE "bankAccount" (
@@ -49,7 +49,7 @@ CREATE TABLE transactions (
     id serial NOT NULL PRIMARY KEY,
     "bankAccountId" integer NOT NULL REFERENCES "bankAccount"(id),
     amount integer NOT NULL,
-    type text NOT NULL,
+    type text NOT NULL ENUM('deposit', 'withdraw'),
     time timestamp NOT NULL DEFAULT NOW(),
     description varchar(50),
     cancelled boolean DEFAULT false
