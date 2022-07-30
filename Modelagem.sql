@@ -29,6 +29,13 @@ CREATE TABLE "customerAddresses" (
     "cityId" integer NOT NULL REFERENCES cities(id)
 );
 
+CREATE TABLE "customerPhones" (
+	id serial NOT NULL PRIMARY KEY,
+	"customerId" integer NOT NULL REFERENCES customers(id),
+	number integer NOT NULL UNIQUE,
+	type text NOT NULL
+);
+
 CREATE TABLE "bankAccount" (
     id serial NOT NULL PRIMARY KEY,
     "customerId" integer NOT NULL REFERENCES customers(id),
