@@ -1,3 +1,5 @@
+CREATE DATABASE modelagem_pratica;
+
 CREATE TABLE customers (
     id serial NOT NULL PRIMARY KEY,
     "fullName" text NOT NULL,
